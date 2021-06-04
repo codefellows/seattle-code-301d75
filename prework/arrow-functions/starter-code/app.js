@@ -156,9 +156,7 @@ console.log(joe);
 
 
 
-Student.prototype.greeting = function() {
-  return `Hi, my name is ${this.name}`;
-};
+Student.prototype.greeting = () => `Hi, my name is ${joe.name}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
@@ -168,9 +166,7 @@ console.log(joe.greeting());
 
 
 
-Student.courseName = function() {
-  return 'This student is enrolled in Code 301.';
-};
+Student.courseName = () =>'This student is enrolled in Code 301.';
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(Student.courseName());
@@ -184,17 +180,19 @@ Student.prototype.scope = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scope());
+console.log(joe.scope());
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scopeArrow());
+console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+// A Student Object
+
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+// A Window Object
+
 // 3. Explain why "this" is different when an arrow function is used.
-//
+// Arrow functions establish "this" based on the scope the Arrow function is defined within.
