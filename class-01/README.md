@@ -8,7 +8,7 @@ We will spend some time reviewing the concepts from the prework. We will also di
 
 ## Daily Plan
 
-- Welcome! Orientation slides & overview of course
+- Welcome! Orientation slides & overview of the course
 - Review of prework
 - Discussion of `create-react-app`
 - Discussion of component based architeture
@@ -23,7 +23,7 @@ As as result of completing Lecture 1 of Code 301, students will:
 - Describe and Define:
   - Component Based Architeture
   - React
-  - create-react-app
+  - `create-react-app`
   - classes
   - arrow functions
 - Gain an understanding of scope with arrow functions
