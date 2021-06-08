@@ -6,13 +6,14 @@ Today's class will focus on passing information as `props` from a parent compone
 
 ## Daily Plan
 
-- Warm-up exercise
-- Review code challenges
-- Introduction of today's code challenge topic
 - Code review of lab assignment
+- Review code challenges
+- Warm-up exercise
 - Code Demo
 - Bootstrap
+- Deployment with Netlify
 - Lab Preview
+- Introduction of today's code challenge topic
 
 ## Learning Objectives
 
@@ -32,7 +33,7 @@ As a result of completing Lecture 2 of Code 301, students will:
 
 ## Notes
 
-1. What is state? 
+1. What is state?
 
 1. What are props?
 
@@ -49,6 +50,7 @@ As a result of completing Lecture 2 of Code 301, students will:
 1. What are different things that I can customize using Bootstrap?
 
 1. Holding state in a parent component and sending it into a child component:
+
   ```javaScript
   import React from 'react';
   import Child from './path-to-Child-component';
