@@ -6,12 +6,12 @@ Yesterday, you learned how to pass information from a parent component into a ch
 
 ## Daily Plan
 
-- Warm-up exercise
 - Review code challenges
-- Introduction of today's code challenge topic
 - Code review of lab assignment
+- Warm-up exercise
 - Code Demo
 - Lab Preview
+- Introduction of today's code challenge topic
 
 ## Learning Objectives
 
