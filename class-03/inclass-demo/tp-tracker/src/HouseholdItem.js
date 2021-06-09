@@ -28,6 +28,8 @@ class HouseholdItem extends React.Component {
       numberRemaining: this.state.numberRemaining + 1,
       hasBought: true
     });
+    // we bought something! tell App.js to remove some money
+    this.props.handleBuyItem(this.props.cost);
   }
 
   decreaseNumberRemaining = () => {
