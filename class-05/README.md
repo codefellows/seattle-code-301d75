@@ -6,16 +6,18 @@ Today we will use the skills we learned over the week to build a new application
 
 ## Daily Plan
 
+- Review code challenge
+- Review Gallery of Horns
 - Warm-up exercise
-- Introduction of today's code challenge topic
 - Build City Explorer (React)
 - Lab Preview
+- Introduction of today's code challenge topic
 
 ## Learning Objectives
 
 As a result of completing lecture 5 of Code 301, students will:
 
-- Describe and Define: 
+- Describe and Define:
   - Conditional Rendering
   - Ternary Statements
   - Browser Router
