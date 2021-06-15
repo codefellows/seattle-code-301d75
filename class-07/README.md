@@ -6,14 +6,41 @@ Today we will build our own custom Express server in Node.js. We will server our
 
 ## Daily Plan
 
-- Warm-up exercise
+- Announcements
+  - 1:1 meetings
+  - Feedback review
 - Review code challenges
-- Introduction of today's code challenge topic
 - Code review of lab assignment
-- Functional programming concepts
+- Warm-up exercise
 - Express Servers
 - Code Demo
 - Lab Preview
+- Introduction of today's code challenge topic, split, join, slice, splice
+
+## Week 1 Feedback Review
+
+### The Good/Most Helpful
+
+- Code review
+- Each other
+  - I definitely notice this class does a great job working together & supporting each other
+
+### The Mixed
+
+- Code challenges
+  - some love them, some find them to be a lot of work
+  - they're VERY helpful towards 401 and future interviews
+
+### The Not-So-Good/Least Helpful
+
+- Day 1 lecture/demo were not close enough to lab, so day 1 lab was hard
+  - Thank you for letting me know! Adding that into the instructor notes about day 1's lecture, and I'll teach it differently next time.
+- Portfolio assignment got a lot of negative feedback
+  - something personal that was so templated
+    - fair
+  - seemed less useful than other labs
+    - I disagree with this one. Reading through starter code & being able to modify it is a skill worth developing.
+  - But even if that's a good skill, it would still be possible to separate out the starter-code part from a portfolio assignment; I've made an issue to discuss w/ the other instructors.
 
 ## Learning Objectives
 
@@ -97,4 +124,3 @@ As a result of completing Class 7 of Code 301, students will be able to:
     response.send(`you sent the city of ${city}`)
   });
   ```
-  
