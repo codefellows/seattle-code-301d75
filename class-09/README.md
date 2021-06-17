@@ -6,18 +6,20 @@ Today we will dive a little bit deeper into Express and higher level programming
 
 - Strategies for Refactoring
 - Functional Programming
+- Promises
 - Modularization
 
 ## Daily Plan
 
-- Warm-up exercise
 - Review code challenges
-- Introduction of today's code challenge topic
 - Code review of lab assignment
+- Warm-up exercise
 - Code Demo
 - Lab Preview
+- Introduction of today's code challenge topic
 
 ## Learning Objectives
+
 Students will be able to:
 
 - Describe and Define  
@@ -61,7 +63,7 @@ Students will be able to:
     }
   }
 
-  // error handeling is built in with the .catch() so we don't need a try/catch
+  // error handling is built in with the .catch() so we don't need a try/catch
   function doSomething() {
     axios
       .get(url)
