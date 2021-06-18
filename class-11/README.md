@@ -6,12 +6,13 @@ Today is the first day of our new project, a mobile-only book collection. You wi
 
 ## Daily Plan
 
-- Warm-up exercise
 - Review code challenges
-- Introduction of today's code challenge topic
+- Review lab
+- Warm-up exercise
 - Authentication
 - Code Demo
 - Lab Preview
+- Introduction of today's code challenge topic
 
 ## Learning Objectives
 
