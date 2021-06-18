@@ -6,11 +6,13 @@ Today we will talk about in-memory storage as well as dive deeper into modulariz
 
 ## Daily Plan
 
-- Warm-up exercise
+- Final Exam discussion
 - Review code challenges
-- Code review of lab assignment
+- Code review of lab assignment: small groups
+- Warm-up exercise
 - In-memory persistence
 - Lab Overview
+- Code challenge prep
 
 ## Learning Objectives
 
@@ -62,4 +64,3 @@ As a result of completing lecture 10 of Code 301, students will:
     // dump the data and get fresh data from the API
   }
   ```
-  
