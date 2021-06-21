@@ -6,6 +6,7 @@ Today is the first day of our new project, a mobile-only book collection. You wi
 
 ## Daily Plan
 
+- Feedback review
 - Review code challenges
 - Review lab
 - Warm-up exercise
@@ -25,6 +26,16 @@ As a result of completing lecture 11 of Code 301, students will:
 - Understand Authentication - its uses and applications
 - Understand the concept of OAuth
 - Be able to implement authentication using Auth0 in their React application
+
+## Feedback Review
+
+- This week was HARD
+  - New concepts were tricky
+  - Trusting the process was key
+- Drawing the WRRC every day was "tedious"
+  - Fair... maybe every other day?
+- Some of the demos were tricky/hard to follow
+  - I didn't get specifics on which ones--please Slack me!
 
 ## Notes
 
