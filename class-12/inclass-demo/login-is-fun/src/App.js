@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
+import Profile from './Profile';
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 
@@ -33,8 +34,7 @@ class App extends React.Component {
           <h1>Login is fun</h1>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           {user ? <>
-            <h3>{user.name}</h3>
-            <button onClick={this.makeRequest}>Make request to server</button>
+            <Profile />
             </> : ''}
         </>
       )
