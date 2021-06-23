@@ -47,18 +47,18 @@ db.once('open', function() {
 const Kitten = require('./models/Kitten');
 
 // Commenting this out so that we don't create useless cats every time we stop & restart the server.
-// use the constructor to make an instance
-let myCoolCat = new Kitten({
-  name: 'Mr Mittens',
-  color: 'gray',
-  email: 'michelle@codefellows.com'
-});
+// // use the constructor to make an instance
+// let myCoolCat = new Kitten({
+//   name: 'Mr Mittens',
+//   color: 'gray',
+//   email: 'michelle@codefellows.com'
+// });
 
-// actually save the cat data into MongoDB
-myCoolCat.save( (err, catDataFromMongo) => {
-  console.log('saved the cat');
-  console.log(catDataFromMongo);
-});
+// // actually save the cat data into MongoDB
+// myCoolCat.save( (err, catDataFromMongo) => {
+//   console.log('saved the cat');
+//   console.log(catDataFromMongo);
+// });
 
 const PORT = process.env.PORT || 3001;
 
@@ -111,6 +111,50 @@ app.get('/test-login', (req, res) => {
 app.post('/test', (req, res) => {
   console.log('at the test route');
   res.send('you hit the test route, good job');
+});
+
+app.post('/cats', (req, res) => {
+
+  const token = req.headers.authorization.split(' ')[1];
+  // make sure the token was valid
+  jwt.verify(token, getKey, {}, function(err, user) {
+    if(err) {
+      res.status(500).send('invalid token');
+    } else {
+      // req.body ONLY exists because of that configuration line at the top of the file
+      // app.use(express.json())
+      // if you do not have that line, req.body will be undefined
+      console.log(req.body);
+      const newCat = new Kitten({
+        name: req.body.name,
+        color: req.body.color,
+        // grab the email from the token
+        email: user.email
+      });
+      newCat.save((err, savedCatData) => {
+        res.send(savedCatData);
+      });
+    }
+  });
+});
+
+// the :id in the path means that that part of the URL is a parameter
+app.delete('/cats/:id', (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  // make sure the token was valid
+  jwt.verify(token, getKey, {}, function(err, user) {
+    if(err) {
+      res.status(500).send('invalid token');
+    } else {
+      let catId = req.params.id;
+
+      Kitten.deleteOne({_id: catId, email: user.email})
+        .then(deletedCatData => {
+          console.log(deletedCatData);
+          res.send('success deleting the cat');
+        });
+    }
+  });
 });
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
