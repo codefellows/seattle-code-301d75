@@ -7,19 +7,10 @@ import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 
 class App extends React.Component {
-  makeRequest = async () => {
-    // this is going to be the same, always, for making requests to the server including the token
-    const { getIdTokenClaims } = this.props.auth0;
-    let tokenClaims = await getIdTokenClaims();
-    const jwt = tokenClaims.__raw;
-
-    const config = {
-      headers: {"Authorization" : `Bearer ${jwt}`}
-    };
-
-    const serverResponse = await axios.get('http://localhost:3001/test-login', config);
-
-    console.log(serverResponse);
+  
+  async componentDidMount() {
+    let res = await axios.post('http://localhost:3001/test');
+    console.log(res.data);
   }
   render() {
     console.log(this.props.auth0);

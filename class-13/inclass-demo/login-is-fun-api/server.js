@@ -6,6 +6,10 @@ require('dotenv').config();
 const cors = require('cors');
 app.use(cors());
 
+// EXCITING NEW CONFIG STEP
+// this will let us access the request body in our POST requests
+app.use(express.json());
+
 // everything here is identical
 // ------------------
 const jwt = require('jsonwebtoken');
@@ -102,6 +106,11 @@ app.get('/test-login', (req, res) => {
       res.send(user);
     }
   });
+});
+
+app.post('/test', (req, res) => {
+  console.log('at the test route');
+  res.send('you hit the test route, good job');
 });
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
