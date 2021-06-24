@@ -10,26 +10,7 @@ app.use(cors());
 // this will let us access the request body in our POST requests
 app.use(express.json());
 
-// everything here is identical
-// ------------------
-const jwt = require('jsonwebtoken');
-const jwksClient = require('jwks-rsa');
-
-const client = jwksClient({
-  // EXCEPT! This line comes from your auth0 dashboard, Advanced Settings, OAuth, the jwks one
-  jwksUri: 'https://dev-q5ygvss9.us.auth0.com/.well-known/jwks.json'
-});
-
-// comes from jsonwebtoken documentation
-function getKey(header, callback){
-  client.getSigningKey(header.kid, function(err, key) {
-    var signingKey = key.publicKey || key.rsaPublicKey;
-    callback(null, signingKey);
-  });
-}
-
-// ----------------------------------
-
+let catHandlers = require('./catHandlers');
 
 // database stuff
 
@@ -44,7 +25,7 @@ db.once('open', function() {
   console.log('successfully connected to mongo');
 });
 
-const Kitten = require('./models/Kitten');
+// const Kitten = require('./models/Kitten');
 
 // Commenting this out so that we don't create useless cats every time we stop & restart the server.
 // // use the constructor to make an instance
@@ -67,94 +48,16 @@ app.get('/', (req, res) => {
 });
 
 // test route: get all the cats
-app.get('/allofthecats', (req, res) => {
-  // go to mongodb
-  // find all of the cats
-  // send them to the user
-  Kitten.find({}, (err, kittens) => {
-    console.log(kittens);
-    res.send(kittens);
-  });
-});
+app.get('/allofthecats', catHandlers.allOfTheCats);
 
 // actual route: get the cats that belong to one user
-app.get('/cats', (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  // make sure the token was valid
-  jwt.verify(token, getKey, {}, function(err, user) {
-    if(err) {
-      res.status(500).send('invalid token');
-    } else {
-      // find the kittens that belong to the user with that email address
-      let userEmail = user.email;
-      Kitten.find({email: userEmail}, (err, kittens) => {
-        console.log(kittens);
-        res.send(kittens);
-      });
-    }
-  });
-});
+app.get('/cats', catHandlers.findCatsByEmail);
 
-app.get('/test-login', (req, res) => {
-  // grab the token that was sent by the frontend
-  const token = req.headers.authorization.split(' ')[1];
-  // make sure the token was valid
-  jwt.verify(token, getKey, {}, function(err, user) {
-    if(err) {
-      res.status(500).send('invalid token');
-    } else {
-      res.send(user);
-    }
-  });
-});
+app.post('/cats', catHandlers.addCat);
 
-app.post('/test', (req, res) => {
-  console.log('at the test route');
-  res.send('you hit the test route, good job');
-});
-
-app.post('/cats', (req, res) => {
-
-  const token = req.headers.authorization.split(' ')[1];
-  // make sure the token was valid
-  jwt.verify(token, getKey, {}, function(err, user) {
-    if(err) {
-      res.status(500).send('invalid token');
-    } else {
-      // req.body ONLY exists because of that configuration line at the top of the file
-      // app.use(express.json())
-      // if you do not have that line, req.body will be undefined
-      console.log(req.body);
-      const newCat = new Kitten({
-        name: req.body.name,
-        color: req.body.color,
-        // grab the email from the token
-        email: user.email
-      });
-      newCat.save((err, savedCatData) => {
-        res.send(savedCatData);
-      });
-    }
-  });
-});
+app.put('/cats/:id', catHandlers.updateCat);
 
 // the :id in the path means that that part of the URL is a parameter
-app.delete('/cats/:id', (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  // make sure the token was valid
-  jwt.verify(token, getKey, {}, function(err, user) {
-    if(err) {
-      res.status(500).send('invalid token');
-    } else {
-      let catId = req.params.id;
-
-      Kitten.deleteOne({_id: catId, email: user.email})
-        .then(deletedCatData => {
-          console.log(deletedCatData);
-          res.send('success deleting the cat');
-        });
-    }
-  });
-});
+app.delete('/cats/:id', catHandlers.deleteCat);
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
